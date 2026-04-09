@@ -1,0 +1,210 @@
+class Battleship {
+    field Array ship;
+    field Array mark;
+    field int size;
+    field int ships;
+    field int torpedos;
+    field int rseed;
+
+    function int mod(int x, int m) {
+        return x - ((x / m) * m);
+    }
+
+    constructor Battleship new() {
+        let size = 5;
+        let ships = 3;
+        let torpedos = 18;
+        let rseed = 17;
+        let ship = Array.new(size * size);
+        let mark = Array.new(size * size);
+        do Screen.clearScreen();
+        do initBoard();
+        do splash();
+        do placeShips();
+        return this;
+    }
+
+    method void initBoard() {
+        var int i, n;
+        let n = size * size;
+        let i = 0;
+        while (i < n) {
+            let ship[i] = 0;
+            let mark[i] = 0;
+            let i = i + 1;
+        }
+        return;
+    }
+
+    method void splash() {
+        do Output.printString("=== BATTLESHIP (5x5) ===");
+        do Output.println();
+        do Output.printString("Three hidden ships. Sink them before");
+        do Output.println();
+        do Output.printString("you run out of torpedos. Keys 1-5 only.");
+        do Output.println();
+        do Output.printString("Press any key to randomize...");
+        do Output.println();
+        do bumpSeed(Keyboard.readChar());
+        return;
+    }
+
+    method void bumpSeed(int k) {
+        let rseed = rseed + k;
+        if (rseed < 0) {
+            let rseed = -rseed;
+        }
+        return;
+    }
+
+    method int nextRand(int n) {
+        let rseed = rseed + 11;
+        if (rseed > 1000) {
+            let rseed = rseed - 1000;
+        }
+        return Battleship.mod((rseed * 17) + 3, n);
+    }
+
+    method void placeShips() {
+        var int placed, pos, n;
+        let n = size * size;
+        let placed = 0;
+        while (placed < ships) {
+            let pos = nextRand(n);
+            if (ship[pos] = 0) {
+                let ship[pos] = 1;
+                let placed = placed + 1;
+            }
+        }
+        return;
+    }
+
+    method int inputDigit() {
+        var int c;
+        let c = Keyboard.readChar();
+        return c - 49;
+    }
+
+    method int readCoord(boolean isRow) {
+        var int v;
+        let v = -1;
+        while (v < 0) {
+            if (isRow) {
+                do Output.printString("Row (1-5): ");
+            } else {
+                do Output.printString("Col (1-5): ");
+            }
+            let v = inputDigit();
+            if ((v < 0) | (v > 4)) {
+                do Output.println();
+                do Output.printString("Use number keys 1 through 5.");
+                do Output.println();
+                let v = -1;
+            }
+        }
+        do Output.println();
+        return v;
+    }
+
+    method void printBoard() {
+        var int r, c, idx;
+        do Output.println();
+        do Output.printString("   1  2  3  4  5");
+        do Output.println();
+        let r = 0;
+        while (r < size) {
+            do Output.printChar(32);
+            do Output.printInt(r + 1);
+            do Output.printChar(32);
+            let c = 0;
+            while (c < size) {
+                let idx = (r * size) + c;
+                do Output.printChar(32);
+                if (mark[idx] = 0) {
+                    do Output.printChar(126);
+                } else {
+                    if (ship[idx] = 1) {
+                        do Output.printChar(42);
+                    } else {
+                        do Output.printChar(111);
+                    }
+                }
+                let c = c + 1;
+            }
+            do Output.println();
+            let r = r + 1;
+        }
+        do Output.println();
+        return;
+    }
+
+    method int countHits() {
+        var int i, h, n;
+        let n = size * size;
+        let h = 0;
+        let i = 0;
+        while (i < n) {
+            if (mark[i] = 2) {
+                let h = h + 1;
+            }
+            let i = i + 1;
+        }
+        return h;
+    }
+
+    method boolean allSunk() {
+        return countHits() = ships;
+    }
+
+    method void run() {
+        var int row, col, idx;
+        while (~allSunk()) {
+            if (torpedos = 0) {
+                do Output.printString("Out of torpedos. You lose.");
+                do Output.println();
+                do revealAll();
+                return;
+            }
+            do printBoard();
+            do Output.printString("Torpedos left: ");
+            do Output.printInt(torpedos);
+            do Output.println();
+            let row = readCoord(true);
+            let col = readCoord(false);
+            let idx = (row * size) + col;
+            if (~(mark[idx] = 0)) {
+                do Output.printString("Already targeted. Try again.");
+                do Output.println();
+            } else {
+                let torpedos = torpedos - 1;
+                if (ship[idx] = 1) {
+                    let mark[idx] = 2;
+                    do Output.printString("Hit!");
+                    do Output.println();
+                } else {
+                    let mark[idx] = 1;
+                    do Output.printString("Miss.");
+                    do Output.println();
+                }
+            }
+        }
+        do printBoard();
+        do Output.printString("All ships sunk. You win!");
+        do Output.println();
+        return;
+    }
+
+    method void revealAll() {
+        var int i, n;
+        let n = size * size;
+        let i = 0;
+        while (i < n) {
+            if (ship[i] = 1) {
+                let mark[i] = 2;
+            }
+            let i = i + 1;
+        }
+        do printBoard();
+        return;
+    }
+}

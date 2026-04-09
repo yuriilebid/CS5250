@@ -1,0 +1,1191 @@
+function Battleship.mod 0
+push argument 0
+push argument 0
+push argument 1
+call Math.divide 2
+push argument 1
+call Math.multiply 2
+sub
+return
+function Battleship.new 0
+push constant 6
+call Memory.alloc 1
+pop pointer 0
+push constant 5
+pop this 2
+push constant 3
+pop this 3
+push constant 18
+pop this 4
+push constant 17
+pop this 5
+push this 2
+push this 2
+call Math.multiply 2
+call Array.new 1
+pop this 0
+push this 2
+push this 2
+call Math.multiply 2
+call Array.new 1
+pop this 1
+call Screen.clearScreen 0
+pop temp 0
+push pointer 0
+call Battleship.initBoard 1
+pop temp 0
+push pointer 0
+call Battleship.splash 1
+pop temp 0
+push pointer 0
+call Battleship.placeShips 1
+pop temp 0
+push pointer 0
+return
+function Battleship.initBoard 2
+push argument 0
+pop pointer 0
+push this 2
+push this 2
+call Math.multiply 2
+pop local 1
+push constant 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push local 1
+lt
+not
+if-goto WHILE_END0
+push local 0
+push this 0
+add
+push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push this 1
+add
+push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function Battleship.splash 0
+push argument 0
+pop pointer 0
+push constant 24
+call String.new 1
+push constant 61
+call String.appendChar 2
+push constant 61
+call String.appendChar 2
+push constant 61
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 66
+call String.appendChar 2
+push constant 65
+call String.appendChar 2
+push constant 84
+call String.appendChar 2
+push constant 84
+call String.appendChar 2
+push constant 76
+call String.appendChar 2
+push constant 69
+call String.appendChar 2
+push constant 83
+call String.appendChar 2
+push constant 72
+call String.appendChar 2
+push constant 73
+call String.appendChar 2
+push constant 80
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 40
+call String.appendChar 2
+push constant 53
+call String.appendChar 2
+push constant 120
+call String.appendChar 2
+push constant 53
+call String.appendChar 2
+push constant 41
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 61
+call String.appendChar 2
+push constant 61
+call String.appendChar 2
+push constant 61
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+call Output.println 0
+pop temp 0
+push constant 36
+call String.new 1
+push constant 84
+call String.appendChar 2
+push constant 104
+call String.appendChar 2
+push constant 114
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 104
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 100
+call String.appendChar 2
+push constant 100
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 110
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 115
+call String.appendChar 2
+push constant 104
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 112
+call String.appendChar 2
+push constant 115
+call String.appendChar 2
+push constant 46
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 83
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 110
+call String.appendChar 2
+push constant 107
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 104
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 109
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 98
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 102
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 114
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+call Output.println 0
+pop temp 0
+push constant 39
+call String.new 1
+push constant 121
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 117
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 114
+call String.appendChar 2
+push constant 117
+call String.appendChar 2
+push constant 110
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 117
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 102
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 114
+call String.appendChar 2
+push constant 112
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 100
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 115
+call String.appendChar 2
+push constant 46
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 75
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 121
+call String.appendChar 2
+push constant 115
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 49
+call String.appendChar 2
+push constant 45
+call String.appendChar 2
+push constant 53
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 110
+call String.appendChar 2
+push constant 108
+call String.appendChar 2
+push constant 121
+call String.appendChar 2
+push constant 46
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+call Output.println 0
+pop temp 0
+push constant 29
+call String.new 1
+push constant 80
+call String.appendChar 2
+push constant 114
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 115
+call String.appendChar 2
+push constant 115
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 110
+call String.appendChar 2
+push constant 121
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 107
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 121
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 114
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 110
+call String.appendChar 2
+push constant 100
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 109
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 122
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 46
+call String.appendChar 2
+push constant 46
+call String.appendChar 2
+push constant 46
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+call Output.println 0
+pop temp 0
+push pointer 0
+call Keyboard.readChar 0
+call Battleship.bumpSeed 2
+pop temp 0
+push constant 0
+return
+function Battleship.bumpSeed 0
+push argument 0
+pop pointer 0
+push this 5
+push argument 1
+add
+pop this 5
+push this 5
+push constant 0
+lt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 5
+neg
+pop this 5
+label IF_FALSE0
+push constant 0
+return
+function Battleship.nextRand 0
+push argument 0
+pop pointer 0
+push this 5
+push constant 11
+add
+pop this 5
+push this 5
+push constant 1000
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 5
+push constant 1000
+sub
+pop this 5
+label IF_FALSE0
+push this 5
+push constant 17
+call Math.multiply 2
+push constant 3
+add
+push argument 1
+call Battleship.mod 2
+return
+function Battleship.placeShips 3
+push argument 0
+pop pointer 0
+push this 2
+push this 2
+call Math.multiply 2
+pop local 2
+push constant 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push this 3
+lt
+not
+if-goto WHILE_END0
+push pointer 0
+push local 2
+call Battleship.nextRand 2
+pop local 1
+push local 1
+push this 0
+add
+pop pointer 1
+push that 0
+push constant 0
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 1
+push this 0
+add
+push constant 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push constant 1
+add
+pop local 0
+label IF_FALSE0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function Battleship.inputDigit 1
+push argument 0
+pop pointer 0
+call Keyboard.readChar 0
+pop local 0
+push local 0
+push constant 49
+sub
+return
+function Battleship.readCoord 1
+push argument 0
+pop pointer 0
+push constant 1
+neg
+pop local 0
+label WHILE_EXP0
+push local 0
+push constant 0
+lt
+not
+if-goto WHILE_END0
+push argument 1
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 11
+call String.new 1
+push constant 82
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 119
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 40
+call String.appendChar 2
+push constant 49
+call String.appendChar 2
+push constant 45
+call String.appendChar 2
+push constant 53
+call String.appendChar 2
+push constant 41
+call String.appendChar 2
+push constant 58
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+goto IF_END0
+label IF_FALSE0
+push constant 11
+call String.new 1
+push constant 67
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 108
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 40
+call String.appendChar 2
+push constant 49
+call String.appendChar 2
+push constant 45
+call String.appendChar 2
+push constant 53
+call String.appendChar 2
+push constant 41
+call String.appendChar 2
+push constant 58
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+label IF_END0
+push pointer 0
+call Battleship.inputDigit 1
+pop local 0
+push local 0
+push constant 0
+lt
+push local 0
+push constant 4
+gt
+or
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+call Output.println 0
+pop temp 0
+push constant 28
+call String.new 1
+push constant 85
+call String.appendChar 2
+push constant 115
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 110
+call String.appendChar 2
+push constant 117
+call String.appendChar 2
+push constant 109
+call String.appendChar 2
+push constant 98
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 114
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 107
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 121
+call String.appendChar 2
+push constant 115
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 49
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 104
+call String.appendChar 2
+push constant 114
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 117
+call String.appendChar 2
+push constant 103
+call String.appendChar 2
+push constant 104
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 53
+call String.appendChar 2
+push constant 46
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+call Output.println 0
+pop temp 0
+push constant 1
+neg
+pop local 0
+label IF_FALSE1
+goto WHILE_EXP0
+label WHILE_END0
+call Output.println 0
+pop temp 0
+push local 0
+return
+function Battleship.printBoard 3
+push argument 0
+pop pointer 0
+call Output.println 0
+pop temp 0
+push constant 16
+call String.new 1
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 49
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 50
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 51
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 52
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 53
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+call Output.println 0
+pop temp 0
+push constant 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push this 2
+lt
+not
+if-goto WHILE_END0
+push constant 32
+call Output.printChar 1
+pop temp 0
+push local 0
+push constant 1
+add
+call Output.printInt 1
+pop temp 0
+push constant 32
+call Output.printChar 1
+pop temp 0
+push constant 0
+pop local 1
+label WHILE_EXP1
+push local 1
+push this 2
+lt
+not
+if-goto WHILE_END1
+push local 0
+push this 2
+call Math.multiply 2
+push local 1
+add
+pop local 2
+push constant 32
+call Output.printChar 1
+pop temp 0
+push local 2
+push this 1
+add
+pop pointer 1
+push that 0
+push constant 0
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 126
+call Output.printChar 1
+pop temp 0
+goto IF_END0
+label IF_FALSE0
+push local 2
+push this 0
+add
+pop pointer 1
+push that 0
+push constant 1
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 42
+call Output.printChar 1
+pop temp 0
+goto IF_END1
+label IF_FALSE1
+push constant 111
+call Output.printChar 1
+pop temp 0
+label IF_END1
+label IF_END0
+push local 1
+push constant 1
+add
+pop local 1
+goto WHILE_EXP1
+label WHILE_END1
+call Output.println 0
+pop temp 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+call Output.println 0
+pop temp 0
+push constant 0
+return
+function Battleship.countHits 3
+push argument 0
+pop pointer 0
+push this 2
+push this 2
+call Math.multiply 2
+pop local 2
+push constant 0
+pop local 1
+push constant 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push local 2
+lt
+not
+if-goto WHILE_END0
+push local 0
+push this 1
+add
+pop pointer 1
+push that 0
+push constant 2
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 1
+push constant 1
+add
+pop local 1
+label IF_FALSE0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push local 1
+return
+function Battleship.allSunk 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Battleship.countHits 1
+push this 3
+eq
+return
+function Battleship.run 3
+push argument 0
+pop pointer 0
+label WHILE_EXP0
+push pointer 0
+call Battleship.allSunk 1
+not
+not
+if-goto WHILE_END0
+push this 4
+push constant 0
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 26
+call String.new 1
+push constant 79
+call String.appendChar 2
+push constant 117
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 102
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 114
+call String.appendChar 2
+push constant 112
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 100
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 115
+call String.appendChar 2
+push constant 46
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 89
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 117
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 108
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 115
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 46
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+call Output.println 0
+pop temp 0
+push pointer 0
+call Battleship.revealAll 1
+pop temp 0
+push constant 0
+return
+label IF_FALSE0
+push pointer 0
+call Battleship.printBoard 1
+pop temp 0
+push constant 15
+call String.new 1
+push constant 84
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 114
+call String.appendChar 2
+push constant 112
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 100
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 115
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 108
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 102
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 58
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push this 4
+call Output.printInt 1
+pop temp 0
+call Output.println 0
+pop temp 0
+push pointer 0
+push constant 0
+not
+call Battleship.readCoord 2
+pop local 0
+push pointer 0
+push constant 0
+call Battleship.readCoord 2
+pop local 1
+push local 0
+push this 2
+call Math.multiply 2
+push local 1
+add
+pop local 2
+push local 2
+push this 1
+add
+pop pointer 1
+push that 0
+push constant 0
+eq
+not
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 28
+call String.new 1
+push constant 65
+call String.appendChar 2
+push constant 108
+call String.appendChar 2
+push constant 114
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 100
+call String.appendChar 2
+push constant 121
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 114
+call String.appendChar 2
+push constant 103
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 100
+call String.appendChar 2
+push constant 46
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 84
+call String.appendChar 2
+push constant 114
+call String.appendChar 2
+push constant 121
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 103
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 110
+call String.appendChar 2
+push constant 46
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+call Output.println 0
+pop temp 0
+goto IF_END1
+label IF_FALSE1
+push this 4
+push constant 1
+sub
+pop this 4
+push local 2
+push this 0
+add
+pop pointer 1
+push that 0
+push constant 1
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push local 2
+push this 1
+add
+push constant 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 4
+call String.new 1
+push constant 72
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 33
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+call Output.println 0
+pop temp 0
+goto IF_END2
+label IF_FALSE2
+push local 2
+push this 1
+add
+push constant 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 5
+call String.new 1
+push constant 77
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 115
+call String.appendChar 2
+push constant 115
+call String.appendChar 2
+push constant 46
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+call Output.println 0
+pop temp 0
+label IF_END2
+label IF_END1
+goto WHILE_EXP0
+label WHILE_END0
+push pointer 0
+call Battleship.printBoard 1
+pop temp 0
+push constant 24
+call String.new 1
+push constant 65
+call String.appendChar 2
+push constant 108
+call String.appendChar 2
+push constant 108
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 115
+call String.appendChar 2
+push constant 104
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 112
+call String.appendChar 2
+push constant 115
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 115
+call String.appendChar 2
+push constant 117
+call String.appendChar 2
+push constant 110
+call String.appendChar 2
+push constant 107
+call String.appendChar 2
+push constant 46
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 89
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 117
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 119
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 110
+call String.appendChar 2
+push constant 33
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+call Output.println 0
+pop temp 0
+push constant 0
+return
+function Battleship.revealAll 2
+push argument 0
+pop pointer 0
+push this 2
+push this 2
+call Math.multiply 2
+pop local 1
+push constant 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push local 1
+lt
+not
+if-goto WHILE_END0
+push local 0
+push this 0
+add
+pop pointer 1
+push that 0
+push constant 1
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 0
+push this 1
+add
+push constant 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+label IF_FALSE0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push pointer 0
+call Battleship.printBoard 1
+pop temp 0
+push constant 0
+return
